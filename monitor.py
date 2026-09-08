@@ -22,6 +22,7 @@ MAX_WORKERS = 8
 TIMEOUT = 20
 
 DATA_DIR = Path("data")
+
 SNAPSHOT_FILE = DATA_DIR / "snapshot.json"
 HISTORY_FILE = DATA_DIR / "history.json"
 DASHBOARD_FILE = Path("dashboard.html")
@@ -45,7 +46,9 @@ HEADERS = {
 # ============================================================
 
 def clean_url(url):
+
     try:
+
         parsed = urlparse(url)
 
         if parsed.scheme not in ("http", "https"):
@@ -84,7 +87,11 @@ def clean_url(url):
         if path.lower().endswith(ignored_extensions):
             return None
 
-        clean = f"{parsed.scheme}://{parsed.netloc}{path}"
+        clean = (
+            f"{parsed.scheme}://"
+            f"{parsed.netloc}"
+            f"{path}"
+        )
 
         if path != "/" and clean.endswith("/"):
             clean = clean[:-1]
@@ -100,7 +107,9 @@ def clean_url(url):
 # ============================================================
 
 def fetch(url):
+
     try:
+
         response = requests.get(
             url,
             headers=HEADERS,
@@ -118,7 +127,11 @@ def fetch(url):
         final_url = response.url
 
         # Successful HTML page
-        if status == 200 and "text/html" in content_type:
+        if (
+            status == 200
+            and "text/html" in content_type
+        ):
+
             return {
                 "status": "success",
                 "html": response.text,
@@ -129,6 +142,7 @@ def fetch(url):
 
         # Confirmed removed page
         if status in (404, 410):
+
             print(
                 f"[REMOVED] {status} | {url}",
                 flush=True
@@ -233,6 +247,7 @@ def extract(url, html):
         "html.parser"
     )
 
+    # Remove non-content elements
     for tag in soup(
         [
             "script",
@@ -243,16 +258,23 @@ def extract(url, html):
     ):
         tag.decompose()
 
+    # --------------------------------------------------------
     # TITLE
+    # --------------------------------------------------------
+
     title = ""
 
     if soup.title:
+
         title = soup.title.get_text(
             " ",
             strip=True
         )
 
+    # --------------------------------------------------------
     # META DESCRIPTION
+    # --------------------------------------------------------
+
     description = ""
 
     description_tag = soup.find(
@@ -266,12 +288,16 @@ def extract(url, html):
     )
 
     if description_tag:
+
         description = description_tag.get(
             "content",
             ""
         ).strip()
 
+    # --------------------------------------------------------
     # CANONICAL
+    # --------------------------------------------------------
+
     canonical = ""
 
     canonical_tag = soup.find(
@@ -290,21 +316,30 @@ def extract(url, html):
         ).strip()
 
         if href:
+
             canonical = urljoin(
                 url,
                 href
             )
 
+    # --------------------------------------------------------
     # H1
+    # --------------------------------------------------------
+
     h1 = [
+
         element.get_text(
             " ",
             strip=True
         )
+
         for element in soup.find_all("h1")
     ]
 
+    # --------------------------------------------------------
     # ROBOTS
+    # --------------------------------------------------------
+
     robots = ""
 
     robots_tag = soup.find(
@@ -324,7 +359,10 @@ def extract(url, html):
             ""
         ).strip()
 
+    # --------------------------------------------------------
     # MAIN CONTENT
+    # --------------------------------------------------------
+
     main = soup.find("main")
 
     if main:
@@ -348,13 +386,21 @@ def extract(url, html):
     ).strip()
 
     return {
+
         "url": url,
+
         "title": title,
+
         "description": description,
+
         "canonical": canonical,
+
         "h1": h1,
+
         "robots": robots,
+
         "content": content,
+
         "content_length": len(content),
     }
 
@@ -366,10 +412,13 @@ def extract(url, html):
 def get_sitemap_urls():
 
     discovered = set()
+
     sitemap_success = False
 
     candidates = [
+
         f"{BASE_URL}/sitemap.xml",
+
         f"{BASE_URL}/sitemap_index.xml",
     ]
 
@@ -449,6 +498,7 @@ def get_sitemap_urls():
                             )
 
                             if page:
+
                                 discovered.add(
                                     page
                                 )
@@ -468,6 +518,7 @@ def get_sitemap_urls():
                     )
 
                     if page:
+
                         discovered.add(
                             page
                         )
@@ -523,6 +574,7 @@ def crawl(old_pages):
     )
 
     if homepage:
+
         sitemap_urls.add(
             homepage
         )
@@ -546,15 +598,21 @@ def crawl(old_pages):
             sitemap_urls
         )
 
+        # Important:
+        # Keep old URLs so deleted pages can be checked.
         urls.update(
             old_pages.keys()
         )
 
     # Final URL filtering
     urls = {
+
         url
+
         for url in urls
+
         if clean_url(url)
+
     }
 
     urls = sorted(
@@ -567,7 +625,9 @@ def crawl(old_pages):
     )
 
     pages = {}
+
     failed = {}
+
     removed = set()
 
     # --------------------------------------------------------
@@ -579,10 +639,12 @@ def crawl(old_pages):
     ) as executor:
 
         jobs = {
+
             executor.submit(
                 fetch,
                 url
             ): url
+
             for url in urls
         }
 
@@ -620,15 +682,18 @@ def crawl(old_pages):
                 else:
 
                     failed[url] = {
+
                         "http_status":
                             result.get(
                                 "http_status"
                             ),
+
                         "content_type":
                             result.get(
                                 "content_type",
                                 ""
                             ),
+
                         "error":
                             result.get(
                                 "error",
@@ -639,8 +704,11 @@ def crawl(old_pages):
             except Exception as error:
 
                 failed[url] = {
+
                     "http_status": None,
+
                     "content_type": "",
+
                     "error": str(error),
                 }
 
@@ -705,6 +773,7 @@ def crawl(old_pages):
             )
 
             if status is None:
+
                 status = "ERROR"
 
             status_counts[status] = (
@@ -730,11 +799,17 @@ def crawl(old_pages):
             )
 
     return {
+
         "pages": pages,
+
         "failed": failed,
+
         "removed": removed,
+
         "duration": duration,
+
         "sitemap_ok": sitemap_ok,
+
         "attempted": len(urls),
     }
 
@@ -753,6 +828,7 @@ def compare(
     changes = []
 
     old_urls = set(old)
+
     new_urls = set(new)
 
     # --------------------------------------------------------
@@ -764,10 +840,15 @@ def compare(
     ):
 
         changes.append({
+
             "type": "new",
+
             "url": url,
+
             "field": "Page",
+
             "details": "New page",
+
             "priority": "medium",
         })
 
@@ -780,11 +861,16 @@ def compare(
     ):
 
         changes.append({
+
             "type": "removed",
+
             "url": url,
+
             "field": "Page",
+
             "details":
                 "Page returned 404/410",
+
             "priority": "high",
         })
 
@@ -828,10 +914,15 @@ def compare(
             )
 
         changes.append({
+
             "type": "failed",
+
             "url": url,
+
             "field": "Crawl",
+
             "details": details,
+
             "priority": "medium",
         })
 
@@ -840,27 +931,54 @@ def compare(
     # --------------------------------------------------------
 
     fields = [
-        ("title", "Title", "high"),
+
+        (
+            "title",
+            "Title",
+            "high"
+        ),
+
         (
             "description",
             "Description",
             "medium"
         ),
+
         (
             "canonical",
             "Canonical",
             "high"
         ),
-        ("h1", "H1", "high"),
-        ("robots", "Robots", "high"),
-        ("content", "Content", "low"),
+
+        (
+            "h1",
+            "H1",
+            "high"
+        ),
+
+        (
+            "robots",
+            "Robots",
+            "high"
+        ),
+
+        (
+            "content",
+            "Content",
+            "low"
+        ),
     ]
+
+    # --------------------------------------------------------
+    # COMPARE COMMON PAGES
+    # --------------------------------------------------------
 
     for url in sorted(
         old_urls & new_urls
     ):
 
         before = old[url]
+
         after = new[url]
 
         for field, label, priority in fields:
@@ -878,13 +996,20 @@ def compare(
             if old_value != new_value:
 
                 changes.append({
+
                     "type": "changed",
+
                     "url": url,
+
                     "field": label,
+
                     "old": old_value,
+
                     "new": new_value,
+
                     "details":
                         f"{label} changed",
+
                     "priority": priority,
                 })
 
@@ -919,6 +1044,7 @@ def save_history(
                 history,
                 list
             ):
+
                 history = []
 
         except Exception:
@@ -930,19 +1056,84 @@ def save_history(
     )
 
     new_count = sum(
-        c["type"] == "new"
+        c.get("type") == "new"
         for c in changes
     )
 
     changed_count = sum(
-        c["type"] == "changed"
+        c.get("type") == "changed"
         for c in changes
     )
 
     actual_removed_count = sum(
-        c["type"] == "removed"
+        c.get("type") == "removed"
         for c in changes
     )
+
+    # --------------------------------------------------------
+    # SAVE COMPLETE CHANGE DETAILS
+    # --------------------------------------------------------
+
+    change_details = []
+
+    for change in changes:
+
+        item = {
+
+            "type":
+                change.get(
+                    "type",
+                    ""
+                ),
+
+            "url":
+                change.get(
+                    "url",
+                    ""
+                ),
+
+            "field":
+                change.get(
+                    "field",
+                    ""
+                ),
+
+            "priority":
+                change.get(
+                    "priority",
+                    ""
+                ),
+
+            "details":
+                change.get(
+                    "details",
+                    ""
+                ),
+        }
+
+        # Save OLD value
+        if "old" in change:
+
+            item["old"] = change.get(
+                "old",
+                ""
+            )
+
+        # Save NEW value
+        if "new" in change:
+
+            item["new"] = change.get(
+                "new",
+                ""
+            )
+
+        change_details.append(
+            item
+        )
+
+    # --------------------------------------------------------
+    # HISTORY RECORD
+    # --------------------------------------------------------
 
     history.append({
 
@@ -971,16 +1162,24 @@ def save_history(
 
         "duration":
             duration,
+
+        # IMPORTANT:
+        # Complete details are saved here.
+        "changes":
+            change_details,
     })
 
+    # Keep last 365 crawl records
     history = history[-365:]
 
     HISTORY_FILE.write_text(
+
         json.dumps(
             history,
             indent=2,
             ensure_ascii=False
         ),
+
         encoding="utf-8"
     )
 
@@ -1000,18 +1199,22 @@ def make_dashboard(
     first_run
 ):
 
+    # --------------------------------------------------------
+    # COUNTS
+    # --------------------------------------------------------
+
     new_count = sum(
-        c["type"] == "new"
+        c.get("type") == "new"
         for c in changes
     )
 
     changed_count = sum(
-        c["type"] == "changed"
+        c.get("type") == "changed"
         for c in changes
     )
 
     removed_count = sum(
-        c["type"] == "removed"
+        c.get("type") == "removed"
         for c in changes
     )
 
@@ -1021,32 +1224,42 @@ def make_dashboard(
     )
 
     title_changes = sum(
-        c["field"] == "Title"
-        and c["type"] == "changed"
+
+        c.get("field") == "Title"
+        and c.get("type") == "changed"
+
         for c in changes
     )
 
     h1_changes = sum(
-        c["field"] == "H1"
-        and c["type"] == "changed"
+
+        c.get("field") == "H1"
+        and c.get("type") == "changed"
+
         for c in changes
     )
 
     description_changes = sum(
-        c["field"] == "Description"
-        and c["type"] == "changed"
+
+        c.get("field") == "Description"
+        and c.get("type") == "changed"
+
         for c in changes
     )
 
     canonical_changes = sum(
-        c["field"] == "Canonical"
-        and c["type"] == "changed"
+
+        c.get("field") == "Canonical"
+        and c.get("type") == "changed"
+
         for c in changes
     )
 
     robots_changes = sum(
-        c["field"] == "Robots"
-        and c["type"] == "changed"
+
+        c.get("field") == "Robots"
+        and c.get("type") == "changed"
+
         for c in changes
     )
 
@@ -1067,7 +1280,7 @@ def make_dashboard(
         health_status = "Needs Attention"
 
     # --------------------------------------------------------
-    # CHANGE ROWS
+    # CURRENT CHANGE CARDS
     # --------------------------------------------------------
 
     rows = []
@@ -1120,7 +1333,18 @@ def make_dashboard(
         )
 
         old_value = escape(
-            str(
+            json.dumps(
+                change.get(
+                    "old",
+                    ""
+                ),
+                ensure_ascii=False
+            )
+            if isinstance(
+                change.get("old", ""),
+                list
+            )
+            else str(
                 change.get(
                     "old",
                     ""
@@ -1129,7 +1353,18 @@ def make_dashboard(
         )
 
         new_value = escape(
-            str(
+            json.dumps(
+                change.get(
+                    "new",
+                    ""
+                ),
+                ensure_ascii=False
+            )
+            if isinstance(
+                change.get("new", ""),
+                list
+            )
+            else str(
                 change.get(
                     "new",
                     ""
@@ -1256,16 +1491,24 @@ def make_dashboard(
         )
 
     # --------------------------------------------------------
-    # HISTORY
+    # HISTORY TABLE
     # --------------------------------------------------------
 
     history_rows = []
 
-    for item in reversed(
-        history
+    for index, item in enumerate(
+        reversed(history)
     ):
 
+        detail_count = len(
+            item.get(
+                "changes",
+                []
+            )
+        )
+
         history_rows.append(
+
             f"""
             <tr>
 
@@ -1278,6 +1521,17 @@ def make_dashboard(
                             )
                         )
                     )}
+                    <br>
+                    <small>
+                        {escape(
+                            str(
+                                item.get(
+                                    "checked_at",
+                                    ""
+                                )
+                            )
+                        )}
+                    </small>
                 </td>
 
                 <td>
@@ -1322,6 +1576,10 @@ def make_dashboard(
                     )}s
                 </td>
 
+                <td>
+                    {detail_count}
+                </td>
+
             </tr>
             """
         )
@@ -1331,7 +1589,7 @@ def make_dashboard(
     )
 
     # --------------------------------------------------------
-    # FIRST RUN
+    # FIRST RUN MESSAGE
     # --------------------------------------------------------
 
     first_run_message = ""
@@ -1340,9 +1598,11 @@ def make_dashboard(
 
         first_run_message = """
         <div class="notice">
+
             First crawl completed.
             This run creates the baseline.
             Future crawls will compare against it.
+
         </div>
         """
 
@@ -1380,6 +1640,7 @@ def make_dashboard(
 }}
 
 body {{
+
     margin: 0;
 
     font-family:
@@ -1393,6 +1654,7 @@ body {{
 }}
 
 .container {{
+
     max-width: 1400px;
 
     margin: auto;
@@ -1401,6 +1663,7 @@ body {{
 }}
 
 header {{
+
     background: white;
 
     border-radius: 18px;
@@ -1415,6 +1678,7 @@ header {{
 }}
 
 header h1 {{
+
     margin:
         0 0 8px;
 
@@ -1422,18 +1686,21 @@ header h1 {{
 }}
 
 header p {{
+
     margin: 0;
 
     color: #687386;
 }}
 
 .notice {{
+
     background: #fff7df;
 
     border:
         1px solid #ead28a;
 
-    padding: 15px 18px;
+    padding:
+        15px 18px;
 
     border-radius: 12px;
 
@@ -1441,6 +1708,7 @@ header p {{
 }}
 
 .cards {{
+
     display: grid;
 
     grid-template-columns:
@@ -1455,6 +1723,7 @@ header p {{
 }}
 
 .card {{
+
     background: white;
 
     border-radius: 15px;
@@ -1467,6 +1736,7 @@ header p {{
 }}
 
 .card .number {{
+
     font-size: 30px;
 
     font-weight: bold;
@@ -1475,12 +1745,14 @@ header p {{
 }}
 
 .card .label {{
+
     color: #687386;
 
     font-size: 14px;
 }}
 
 .section {{
+
     background: white;
 
     border-radius: 18px;
@@ -1495,10 +1767,12 @@ header p {{
 }}
 
 .section h2 {{
+
     margin-top: 0;
 }}
 
 .health {{
+
     display: grid;
 
     grid-template-columns:
@@ -1511,6 +1785,7 @@ header p {{
 }}
 
 .health-item {{
+
     padding: 16px;
 
     border-radius: 12px;
@@ -1519,16 +1794,19 @@ header p {{
 }}
 
 .health-item strong {{
+
     display: block;
 
     margin-bottom: 6px;
 }}
 
 .health-status {{
+
     font-weight: bold;
 }}
 
 .controls {{
+
     display: flex;
 
     gap: 10px;
@@ -1540,6 +1818,7 @@ header p {{
 
 input,
 select {{
+
     padding:
         11px 13px;
 
@@ -1552,6 +1831,7 @@ select {{
 }}
 
 .change-card {{
+
     border:
         1px solid #e2e6ee;
 
@@ -1565,6 +1845,7 @@ select {{
 }}
 
 .change-card summary {{
+
     cursor: pointer;
 
     display: flex;
@@ -1579,6 +1860,7 @@ select {{
 }}
 
 .summary-main {{
+
     display: flex;
 
     gap: 10px;
@@ -1590,6 +1872,7 @@ select {{
 }}
 
 .badge {{
+
     padding:
         5px 9px;
 
@@ -1603,21 +1886,25 @@ select {{
 }}
 
 .priority {{
+
     font-size: 12px;
 
     font-weight: bold;
 }}
 
 .url {{
+
     overflow-wrap:
         anywhere;
 }}
 
 .change-card p {{
+
     color: #687386;
 }}
 
 .diff {{
+
     display: grid;
 
     grid-template-columns:
@@ -1630,6 +1917,7 @@ select {{
 
 .old,
 .new {{
+
     padding: 15px;
 
     border-radius: 10px;
@@ -1639,19 +1927,23 @@ select {{
 }}
 
 .old {{
+
     background: #fff0f0;
 }}
 
 .new {{
+
     background: #effaf2;
 }}
 
 .old h4,
 .new h4 {{
+
     margin-top: 0;
 }}
 
 .empty {{
+
     padding: 30px;
 
     text-align: center;
@@ -1660,6 +1952,7 @@ select {{
 }}
 
 table {{
+
     width: 100%;
 
     border-collapse:
@@ -1668,6 +1961,7 @@ table {{
 
 th,
 td {{
+
     text-align: left;
 
     padding: 12px;
@@ -1677,23 +1971,34 @@ td {{
 }}
 
 th {{
+
     font-size: 13px;
 
     color: #687386;
 }}
 
+small {{
+
+    color: #687386;
+
+    font-size: 11px;
+}}
+
 @media(max-width:700px) {{
 
     .container {{
+
         padding: 15px;
     }}
 
     .diff {{
+
         grid-template-columns:
             1fr;
     }}
 
     .summary-main {{
+
         align-items:
             flex-start;
     }}
@@ -1708,7 +2013,6 @@ th {{
 
 <div class="container">
 
-
 <header>
 
 <h1>
@@ -1720,12 +2024,13 @@ th {{
 </p>
 
 <p style="margin-top:8px;">
+
     Last checked:
     {checked_at}
+
 </p>
 
 </header>
-
 
 {first_run_message}
 
@@ -1733,7 +2038,6 @@ th {{
 <!-- OVERVIEW -->
 
 <div class="cards">
-
 
 <div class="card">
 
@@ -1954,7 +2258,7 @@ th {{
 </div>
 
 
-<!-- CHANGES -->
+<!-- CURRENT CHANGES -->
 
 <div class="section">
 
@@ -1968,7 +2272,7 @@ th {{
 <input
     id="search"
     type="text"
-    placeholder="Search URL or change..."
+    placeholder="Search URL, H1, Title..."
     onkeyup="filterChanges()"
 >
 
@@ -2000,6 +2304,42 @@ th {{
 
 </select>
 
+
+<select
+    id="field"
+    onchange="filterChanges()"
+>
+
+<option value="all">
+    All Fields
+</option>
+
+<option value="H1">
+    H1
+</option>
+
+<option value="Title">
+    Title
+</option>
+
+<option value="Description">
+    Description
+</option>
+
+<option value="Canonical">
+    Canonical
+</option>
+
+<option value="Robots">
+    Robots
+</option>
+
+<option value="Content">
+    Content
+</option>
+
+</select>
+
 </div>
 
 
@@ -2019,6 +2359,11 @@ th {{
 <h2>
     Change History
 </h2>
+
+<p style="color:#687386;">
+    Every crawl now stores complete change details
+    including OLD → NEW values.
+</p>
 
 
 <div style="overflow-x:auto;">
@@ -2057,6 +2402,10 @@ th {{
     Duration
 </th>
 
+<th>
+    Details
+</th>
+
 </tr>
 
 </thead>
@@ -2093,6 +2442,11 @@ function filterChanges() {{
         .getElementById("type")
         .value;
 
+    const field =
+        document
+        .getElementById("field")
+        .value;
+
     const cards =
         document.querySelectorAll(
             "#changes .change-card"
@@ -2107,6 +2461,16 @@ function filterChanges() {{
         const cardType =
             card.dataset.type;
 
+        const fieldText =
+            card.querySelector(
+                "strong"
+            );
+
+        const cardField =
+            fieldText
+            ? fieldText.innerText
+            : "";
+
         const matchesSearch =
             text.includes(search);
 
@@ -2115,9 +2479,17 @@ function filterChanges() {{
             ||
             cardType === type;
 
+        const matchesField =
+            field === "all"
+            ||
+            cardField === field;
+
         card.style.display =
             matchesSearch
-            && matchesType
+            &&
+            matchesType
+            &&
+            matchesField
             ? ""
             : "none";
 
@@ -2126,6 +2498,7 @@ function filterChanges() {{
 }}
 
 </script>
+
 
 </body>
 
@@ -2219,6 +2592,51 @@ def main():
     )
 
     # --------------------------------------------------------
+    # PRINT DETECTED CHANGES
+    # --------------------------------------------------------
+
+    if changes:
+
+        print(
+            "[DETECTED CHANGES]",
+            flush=True
+        )
+
+        for change in changes:
+
+            if change.get(
+                "type"
+            ) == "changed":
+
+                print(
+                    f"[CHANGE] "
+                    f"{change.get('field')} | "
+                    f"{change.get('url')}",
+                    flush=True
+                )
+
+                print(
+                    f"  OLD: "
+                    f"{change.get('old')}",
+                    flush=True
+                )
+
+                print(
+                    f"  NEW: "
+                    f"{change.get('new')}",
+                    flush=True
+                )
+
+            else:
+
+                print(
+                    f"[CHANGE] "
+                    f"{change.get('type')} | "
+                    f"{change.get('url')}",
+                    flush=True
+                )
+
+    # --------------------------------------------------------
     # SNAPSHOT
     # --------------------------------------------------------
 
@@ -2243,11 +2661,13 @@ def main():
     }
 
     SNAPSHOT_FILE.write_text(
+
         json.dumps(
             snapshot,
             indent=2,
             ensure_ascii=False
         ),
+
         encoding="utf-8"
     )
 
@@ -2256,10 +2676,15 @@ def main():
     # --------------------------------------------------------
 
     history = save_history(
+
         pages=pages,
+
         changes=changes,
+
         duration=duration,
+
         failed_count=len(failed),
+
         removed_count=len(removed),
     )
 
@@ -2268,11 +2693,17 @@ def main():
     # --------------------------------------------------------
 
     make_dashboard(
+
         pages=pages,
+
         changes=changes,
+
         history=history,
+
         duration=duration,
+
         failed_count=len(failed),
+
         first_run=first_run,
     )
 
@@ -2304,6 +2735,10 @@ def main():
         flush=True
     )
 
+
+# ============================================================
+# RUN
+# ============================================================
 
 if __name__ == "__main__":
     main()
