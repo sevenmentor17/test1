@@ -58,6 +58,32 @@ def clean_url(url):
 
         path = parsed.path or "/"
 
+        # Ignore obvious non-HTML assets
+        ignored_extensions = (
+            ".jpg",
+            ".jpeg",
+            ".png",
+            ".gif",
+            ".webp",
+            ".svg",
+            ".ico",
+            ".pdf",
+            ".zip",
+            ".mp4",
+            ".mp3",
+            ".webm",
+            ".css",
+            ".js",
+            ".xml",
+            ".json",
+            ".woff",
+            ".woff2",
+            ".ttf",
+        )
+
+        if path.lower().endswith(ignored_extensions):
+            return None
+
         clean = f"{parsed.scheme}://{parsed.netloc}{path}"
 
         if path != "/" and clean.endswith("/"):
@@ -91,6 +117,7 @@ def fetch(url):
 
         final_url = response.url
 
+        # Successful HTML page
         if status == 200 and "text/html" in content_type:
             return {
                 "status": "success",
@@ -100,6 +127,7 @@ def fetch(url):
                 "final_url": final_url,
             }
 
+        # Confirmed removed page
         if status in (404, 410):
             print(
                 f"[REMOVED] {status} | {url}",
@@ -114,6 +142,7 @@ def fetch(url):
                 "final_url": final_url,
             }
 
+        # Everything else
         print(
             f"[FAILED] {status} | "
             f"{content_type or 'unknown'} | "
@@ -204,8 +233,6 @@ def extract(url, html):
         "html.parser"
     )
 
-    # Remove elements that should not affect
-    # visible content monitoring.
     for tag in soup(
         [
             "script",
@@ -216,10 +243,7 @@ def extract(url, html):
     ):
         tag.decompose()
 
-    # --------------------------------------------------------
     # TITLE
-    # --------------------------------------------------------
-
     title = ""
 
     if soup.title:
@@ -228,10 +252,7 @@ def extract(url, html):
             strip=True
         )
 
-    # --------------------------------------------------------
     # META DESCRIPTION
-    # --------------------------------------------------------
-
     description = ""
 
     description_tag = soup.find(
@@ -250,10 +271,7 @@ def extract(url, html):
             ""
         ).strip()
 
-    # --------------------------------------------------------
     # CANONICAL
-    # --------------------------------------------------------
-
     canonical = ""
 
     canonical_tag = soup.find(
@@ -277,10 +295,7 @@ def extract(url, html):
                 href
             )
 
-    # --------------------------------------------------------
     # H1
-    # --------------------------------------------------------
-
     h1 = [
         element.get_text(
             " ",
@@ -289,10 +304,7 @@ def extract(url, html):
         for element in soup.find_all("h1")
     ]
 
-    # --------------------------------------------------------
     # ROBOTS
-    # --------------------------------------------------------
-
     robots = ""
 
     robots_tag = soup.find(
@@ -312,10 +324,7 @@ def extract(url, html):
             ""
         ).strip()
 
-    # --------------------------------------------------------
     # MAIN CONTENT
-    # --------------------------------------------------------
-
     main = soup.find("main")
 
     if main:
@@ -337,10 +346,6 @@ def extract(url, html):
         " ",
         content
     ).strip()
-
-    # --------------------------------------------------------
-    # RESULT
-    # --------------------------------------------------------
 
     return {
         "url": url,
@@ -411,8 +416,11 @@ def get_sitemap_urls():
                     strip=True
                 )
 
-                # Sitemap index
-                if value.endswith(".xml"):
+                # ------------------------------------------------
+                # CHILD SITEMAP
+                # ------------------------------------------------
+
+                if value.lower().endswith(".xml"):
 
                     try:
 
@@ -449,7 +457,10 @@ def get_sitemap_urls():
 
                         continue
 
-                # Normal sitemap URL
+                # ------------------------------------------------
+                # NORMAL URL
+                # ------------------------------------------------
+
                 else:
 
                     page = clean_url(
@@ -465,7 +476,7 @@ def get_sitemap_urls():
 
                 print(
                     f"[SITEMAP] "
-                    f"{len(discovered)} URLs found",
+                    f"{len(discovered)} HTML URLs found",
                     flush=True
                 )
 
@@ -485,8 +496,7 @@ def get_sitemap_urls():
             continue
 
     print(
-        f"[SITEMAP] "
-        f"No usable sitemap found",
+        "[SITEMAP] No usable sitemap found",
         flush=True
     )
 
@@ -517,10 +527,7 @@ def crawl(old_pages):
             homepage
         )
 
-    # --------------------------------------------------------
-    # URL SOURCE
-    # --------------------------------------------------------
-
+    # If sitemap fails, safely reuse old URLs
     if not sitemap_ok and old_pages:
 
         urls = set(
@@ -543,12 +550,19 @@ def crawl(old_pages):
             old_pages.keys()
         )
 
+    # Final URL filtering
+    urls = {
+        url
+        for url in urls
+        if clean_url(url)
+    }
+
     urls = sorted(
         urls
     )[:MAX_PAGES]
 
     print(
-        f"[START] {len(urls)} pages",
+        f"[START] {len(urls)} HTML pages",
         flush=True
     )
 
@@ -676,7 +690,10 @@ def crawl(old_pages):
         flush=True
     )
 
-    # Print failure summary
+    # --------------------------------------------------------
+    # FAILURE SUMMARY
+    # --------------------------------------------------------
+
     if failed:
 
         status_counts = {}
@@ -723,7 +740,7 @@ def crawl(old_pages):
 
 
 # ============================================================
-# COMPARE OLD VS NEW
+# COMPARE
 # ============================================================
 
 def compare(
@@ -875,7 +892,7 @@ def compare(
 
 
 # ============================================================
-# SAVE HISTORY
+# HISTORY
 # ============================================================
 
 def save_history(
@@ -956,7 +973,6 @@ def save_history(
             duration,
     })
 
-    # Keep last 365 records
     history = history[-365:]
 
     HISTORY_FILE.write_text(
@@ -999,11 +1015,6 @@ def make_dashboard(
         for c in changes
     )
 
-    failed_change_count = sum(
-        c["type"] == "failed"
-        for c in changes
-    )
-
     high_priority = sum(
         c.get("priority") == "high"
         for c in changes
@@ -1040,16 +1051,19 @@ def make_dashboard(
     )
 
     # --------------------------------------------------------
-    # HEALTH STATUS
+    # HEALTH
     # --------------------------------------------------------
 
     if failed_count == 0:
+
         health_status = "Healthy"
 
     elif failed_count < 5:
+
         health_status = "Warning"
 
     else:
+
         health_status = "Needs Attention"
 
     # --------------------------------------------------------
@@ -1133,6 +1147,7 @@ def make_dashboard(
                     class="change-card"
                     data-type="changed"
                 >
+
                     <summary>
 
                         <div class="summary-main">
@@ -1161,7 +1176,9 @@ def make_dashboard(
 
                         <div class="old">
 
-                            <h4>OLD</h4>
+                            <h4>
+                                OLD
+                            </h4>
 
                             <div>
                                 {old_value}
@@ -1171,7 +1188,9 @@ def make_dashboard(
 
                         <div class="new">
 
-                            <h4>NEW</h4>
+                            <h4>
+                                NEW
+                            </h4>
 
                             <div>
                                 {new_value}
@@ -1312,7 +1331,7 @@ def make_dashboard(
     )
 
     # --------------------------------------------------------
-    # FIRST RUN NOTICE
+    # FIRST RUN
     # --------------------------------------------------------
 
     first_run_message = ""
@@ -1326,10 +1345,6 @@ def make_dashboard(
             Future crawls will compare against it.
         </div>
         """
-
-    # --------------------------------------------------------
-    # CURRENT TIME
-    # --------------------------------------------------------
 
     checked_at = datetime.now(
         timezone.utc
@@ -1693,6 +1708,7 @@ th {{
 
 <div class="container">
 
+
 <header>
 
 <h1>
@@ -1710,12 +1726,14 @@ th {{
 
 </header>
 
+
 {first_run_message}
 
 
 <!-- OVERVIEW -->
 
 <div class="cards">
+
 
 <div class="card">
 
@@ -1784,7 +1802,7 @@ th {{
 </div>
 
 
-<!-- SEO SUMMARY -->
+<!-- SEO -->
 
 <div class="section">
 
@@ -1864,7 +1882,7 @@ th {{
 </div>
 
 
-<!-- CRAWL HEALTH -->
+<!-- HEALTH -->
 
 <div class="section">
 
@@ -1936,7 +1954,7 @@ th {{
 </div>
 
 
-<!-- CURRENT CHANGES -->
+<!-- CHANGES -->
 
 <div class="section">
 
