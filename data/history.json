@@ -18,5 +18,15 @@
     "removed": 0,
     "failed": 41,
     "duration": 16.38
+  },
+  {
+    "date": "2026-09-08",
+    "checked_at": "2026-09-08T10:51:02.148474+00:00",
+    "pages": 42,
+    "new": 0,
+    "changed": 0,
+    "removed": 0,
+    "failed": 41,
+    "duration": 12.65
   }
 ]

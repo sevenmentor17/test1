@@ -1,5 +1,6 @@
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -22,90 +23,117 @@
 
 body {
     margin: 0;
+
     font-family:
         Arial,
         Helvetica,
         sans-serif;
+
     background: #f5f7fb;
+
     color: #172033;
 }
 
 .container {
     max-width: 1400px;
+
     margin: auto;
+
     padding: 30px;
 }
 
 header {
     background: white;
+
     border-radius: 18px;
+
     padding: 28px;
+
     margin-bottom: 22px;
+
     box-shadow:
-        0 4px 18px rgba(
-            0,0,0,0.06
-        );
+        0 4px 18px
+        rgba(0,0,0,0.06);
 }
 
 header h1 {
-    margin: 0 0 8px;
+    margin:
+        0 0 8px;
+
     font-size: 30px;
 }
 
 header p {
     margin: 0;
+
     color: #687386;
 }
 
 .notice {
     background: #fff7df;
-    border: 1px solid #ead28a;
+
+    border:
+        1px solid #ead28a;
+
     padding: 15px 18px;
+
     border-radius: 12px;
+
     margin-bottom: 20px;
 }
 
 .cards {
     display: grid;
+
     grid-template-columns:
         repeat(
             auto-fit,
             minmax(160px, 1fr)
         );
+
     gap: 15px;
+
     margin-bottom: 22px;
 }
 
 .card {
     background: white;
+
     border-radius: 15px;
+
     padding: 20px;
+
     box-shadow:
-        0 4px 18px rgba(
-            0,0,0,0.05
-        );
+        0 4px 18px
+        rgba(0,0,0,0.05);
 }
 
 .card .number {
     font-size: 30px;
+
     font-weight: bold;
+
     margin-bottom: 6px;
 }
 
 .card .label {
     color: #687386;
+
     font-size: 14px;
 }
 
 .section {
     background: white;
+
     border-radius: 18px;
+
     padding: 24px;
+
     margin-bottom: 22px;
+
     box-shadow:
-        0 4px 18px rgba(
-            0,0,0,0.05
-        );
+        0 4px 18px
+        rgba(0,0,0,0.05);
 }
 
 .section h2 {
@@ -114,73 +142,117 @@ header p {
 
 .health {
     display: grid;
+
     grid-template-columns:
         repeat(
             auto-fit,
             minmax(180px, 1fr)
         );
+
     gap: 15px;
 }
 
 .health-item {
     padding: 16px;
+
     border-radius: 12px;
+
     background: #f7f8fb;
 }
 
 .health-item strong {
     display: block;
+
     margin-bottom: 6px;
+}
+
+.health-status {
+    font-weight: bold;
 }
 
 .controls {
     display: flex;
+
     gap: 10px;
+
     flex-wrap: wrap;
+
     margin-bottom: 18px;
 }
 
 input,
 select {
-    padding: 11px 13px;
-    border: 1px solid #d8dce5;
+    padding:
+        11px 13px;
+
+    border:
+        1px solid #d8dce5;
+
     border-radius: 10px;
+
     font-size: 14px;
 }
 
 .change-card {
-    border: 1px solid #e2e6ee;
+    border:
+        1px solid #e2e6ee;
+
     border-radius: 13px;
+
     padding: 15px;
+
     margin-bottom: 12px;
+
+    background: white;
 }
 
 .change-card summary {
     cursor: pointer;
+
     display: flex;
-    justify-content: space-between;
+
+    justify-content:
+        space-between;
+
     gap: 15px;
-    align-items: center;
+
+    align-items:
+        center;
 }
 
 .summary-main {
     display: flex;
+
     gap: 10px;
-    align-items: center;
+
+    align-items:
+        center;
+
     flex-wrap: wrap;
 }
 
 .badge {
-    padding: 5px 9px;
+    padding:
+        5px 9px;
+
     border-radius: 7px;
+
     background: #eef1f6;
+
     font-size: 12px;
+
     font-weight: bold;
 }
 
 .priority {
     font-size: 12px;
+
     font-weight: bold;
+}
+
+.url {
+    overflow-wrap:
+        anywhere;
 }
 
 .change-card p {
@@ -189,17 +261,23 @@ select {
 
 .diff {
     display: grid;
+
     grid-template-columns:
         1fr 1fr;
+
     gap: 15px;
+
     margin-top: 18px;
 }
 
 .old,
 .new {
     padding: 15px;
+
     border-radius: 10px;
-    overflow-wrap: anywhere;
+
+    overflow-wrap:
+        anywhere;
 }
 
 .old {
@@ -217,25 +295,32 @@ select {
 
 .empty {
     padding: 30px;
+
     text-align: center;
+
     color: #687386;
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
+
+    border-collapse:
+        collapse;
 }
 
 th,
 td {
     text-align: left;
+
     padding: 12px;
+
     border-bottom:
         1px solid #edf0f4;
 }
 
 th {
     font-size: 13px;
+
     color: #687386;
 }
 
@@ -246,11 +331,13 @@ th {
     }
 
     .diff {
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
     .summary-main {
-        align-items: flex-start;
+        align-items:
+            flex-start;
     }
 
 }
@@ -274,62 +361,87 @@ th {
 </p>
 
 <p style="margin-top:8px;">
-    Last checked: 2026-09-08 10:44 UTC
+    Last checked:
+    2026-09-08 10:51 UTC
 </p>
 
 </header>
 
 
 
+
+<!-- OVERVIEW -->
+
 <div class="cards">
 
 <div class="card">
+
     <div class="number">
         42
     </div>
+
     <div class="label">
         Pages
     </div>
+
 </div>
 
+
 <div class="card">
+
     <div class="number">
         0
     </div>
+
     <div class="label">
         New
     </div>
+
 </div>
 
+
 <div class="card">
+
     <div class="number">
         0
     </div>
+
     <div class="label">
         Changed
     </div>
+
 </div>
 
+
 <div class="card">
+
     <div class="number">
         0
     </div>
+
     <div class="label">
         Removed
     </div>
+
 </div>
 
+
 <div class="card">
+
     <div class="number">
         0
     </div>
+
     <div class="label">
         High Priority
     </div>
-</div>
 
 </div>
 
+</div>
+
+
+<!-- SEO SUMMARY -->
 
 <div class="section">
 
@@ -339,55 +451,77 @@ th {
 
 <div class="cards">
 
+
 <div class="card">
+
     <div class="number">
         0
     </div>
+
     <div class="label">
         Title Changes
     </div>
+
 </div>
 
+
 <div class="card">
+
     <div class="number">
         0
     </div>
+
     <div class="label">
         H1 Changes
     </div>
+
 </div>
 
+
 <div class="card">
+
     <div class="number">
         0
     </div>
+
     <div class="label">
         Description Changes
     </div>
+
 </div>
 
+
 <div class="card">
+
     <div class="number">
         0
     </div>
+
     <div class="label">
         Canonical Changes
     </div>
+
 </div>
 
+
 <div class="card">
+
     <div class="number">
         0
     </div>
+
     <div class="label">
         Robots Changes
     </div>
-</div>
 
 </div>
 
 </div>
 
+</div>
+
+
+<!-- CRAWL HEALTH -->
 
 <div class="section">
 
@@ -397,41 +531,76 @@ th {
 
 <div class="health">
 
-<div class="health-item">
-<strong>Status</strong>
-Healthy
-</div>
 
 <div class="health-item">
-<strong>Pages Scanned</strong>
+
+<strong>
+    Status
+</strong>
+
+<div class="health-status">
+    Needs Attention
+</div>
+
+</div>
+
+
+<div class="health-item">
+
+<strong>
+    Pages Scanned
+</strong>
+
 42
+
 </div>
 
+
 <div class="health-item">
-<strong>Failed</strong>
+
+<strong>
+    Failed
+</strong>
+
 41
+
 </div>
 
-<div class="health-item">
-<strong>Duration</strong>
-16.38s
-</div>
 
 <div class="health-item">
-<strong>Change Records</strong>
+
+<strong>
+    Duration
+</strong>
+
+12.65s
+
+</div>
+
+
+<div class="health-item">
+
+<strong>
+    Change Records
+</strong>
+
 41
-</div>
 
 </div>
 
 </div>
 
+</div>
+
+
+<!-- CURRENT CHANGES -->
 
 <div class="section">
 
 <h2>
     Current Changes
 </h2>
+
 
 <div class="controls">
 
@@ -441,6 +610,7 @@ Healthy
     placeholder="Search URL or change..."
     onkeyup="filterChanges()"
 >
+
 
 <select
     id="type"
@@ -471,785 +641,1319 @@ Healthy
 
 </div>
 
+
 <div id="changes">
 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/01/Low-maintenance-indoor-plants-1.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/01/Low-maintenance-indoor-plants-1.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/02/Best-Organic-Liquid-Fertilizer-for-Vegetable-Garden_11zon.jpeg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/02/Best-Organic-Liquid-Fertilizer-for-Vegetable-Garden_11zon.jpeg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/02/Fertilizers-for-Indoor-Herbs-1.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/02/Fertilizers-for-Indoor-Herbs-1.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/06/Top-10-Best-Indoor-Plants.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/06/Top-10-Best-Indoor-Plants.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/09/Air-Purifying-Plants-1.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/09/Air-Purifying-Plants-1.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/09/Best-Indoor-Plants-for-Clean-Air-2.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/09/Best-Indoor-Plants-for-Clean-Air-2.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/Brazil-Nuts-Tree-in-India-2.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/Brazil-Nuts-Tree-in-India-2.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/Fish-Farming-Business-Plan-in-India.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/Fish-Farming-Business-Plan-in-India.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/Greenhouse-Farming-in-India-2.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/Greenhouse-Farming-in-India-2.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/Hydrangeas.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/Hydrangeas.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/Organic-Fertilizer-Hydroponics-1.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/Organic-Fertilizer-Hydroponics-1.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/Organic-Water-Soluble-Fertilizer1-1.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/Organic-Water-Soluble-Fertilizer1-1.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/brazil-nuts-tree-in-india.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/brazil-nuts-tree-in-india.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/lemon-farming-in-india-1.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/lemon-farming-in-india-1.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/lemon-farming-in-india.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/lemon-farming-in-india.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/mushrooms-business-plan-image.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/mushrooms-business-plan-image.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/mushrooms-business-plan-types.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/mushrooms-business-plan-types.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/10/mushrooms-business-plan1.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/10/mushrooms-business-plan1.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/11/3d12f73eb2cc61b1174a868b86cac02e.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/11/3d12f73eb2cc61b1174a868b86cac02e.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/11/Bougainvillea.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/11/Bougainvillea.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/11/Hibiscus.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/11/Hibiscus.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/11/Jasmine.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/11/Jasmine.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/11/coconut-flower-benefits1.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/11/coconut-flower-benefits1.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/11/dragon-fruit-flower.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/11/dragon-fruit-flower.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/11/vertical-farming.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/11/vertical-farming.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/Aloe-Vera-sprout-and-soil.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/Aloe-Vera-sprout-and-soil.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/Best-Indoor-Plants-for-Bedroom-Air-Quality.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/Best-Indoor-Plants-for-Bedroom-Air-Quality.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/ChatGPT-Image-Dec-29-2025-06_47_26-PM.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/ChatGPT-Image-Dec-29-2025-06_47_26-PM.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/Mango-Farming-in-india.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/Mango-Farming-in-india.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/Snake-Plant-Sansevieria.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/Snake-Plant-Sansevieria.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/air-purifying-houseplants-6647bfbf566b5.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/air-purifying-houseplants-6647bfbf566b5.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/is-it-safe-to-keep-plants-in-bedroom-at-night-1.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/is-it-safe-to-keep-plants-in-bedroom-at-night-1.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/kitchen-garden-ideas.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/kitchen-garden-ideas.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/pothos-a-houseplant-displayed-in-a-stylish-room-royalty-free-image-1719410848.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/pothos-a-houseplant-displayed-in-a-stylish-room-royalty-free-image-1719410848.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2025/12/sprout-and-soil.webp</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2025/12/sprout-and-soil.webp
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2026/01/almond-tree.jpg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2026/01/almond-tree.jpg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2026/01/hazelnut.jpeg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2026/01/hazelnut.jpeg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2026/01/peas-farming-in-kenya.jpeg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2026/01/peas-farming-in-kenya.jpeg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2026/01/peepla-tree-release-oxygen-at-night.jpeg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2026/01/peepla-tree-release-oxygen-at-night.jpeg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2026/01/snake-plant.jpeg</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2026/01/snake-plant.jpeg
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
-                <div class="change-card">
+                <div
+                    class="change-card"
+                    data-type="failed"
+                >
+
                     <div class="summary-main">
+
                         <span class="badge">
                             Failed
                         </span>
 
-                        <strong>Crawl</strong>
+                        <strong>
+                            Crawl
+                        </strong>
 
-                        <span>https://sproutandsoil.com/wp-content/uploads/2026/08/how-to-crack-kraftshala-screening-test.png</span>
+                        <span class="url">
+                            https://sproutandsoil.com/wp-content/uploads/2026/08/how-to-crack-kraftshala-screening-test.png
+                        </span>
+
                     </div>
 
                     <span class="priority">
                         Medium
                     </span>
 
-                    <p>Temporary crawl failure</p>
+                    <p>
+                        Crawl failed (HTTP 200)
+                    </p>
+
                 </div>
                 
 
@@ -1257,12 +1961,15 @@ Healthy
 
 </div>
 
+
+<!-- HISTORY -->
 
 <div class="section">
 
 <h2>
     Change History
 </h2>
+
 
 <div style="overflow-x:auto;">
 
@@ -1271,39 +1978,139 @@ Healthy
 <thead>
 
 <tr>
-<th>Date</th>
-<th>Pages</th>
-<th>New</th>
-<th>Changed</th>
-<th>Removed</th>
-<th>Failed</th>
-<th>Duration</th>
+
+<th>
+    Date
+</th>
+
+<th>
+    Pages
+</th>
+
+<th>
+    New
+</th>
+
+<th>
+    Changed
+</th>
+
+<th>
+    Removed
+</th>
+
+<th>
+    Failed
+</th>
+
+<th>
+    Duration
+</th>
+
 </tr>
 
 </thead>
+
 
 <tbody>
 
 
             <tr>
-                <td>2026-09-08</td>
-                <td>42</td>
-                <td>0</td>
-                <td>0</td>
-                <td>0</td>
-                <td>41</td>
-                <td>16.38s</td>
+
+                <td>
+                    2026-09-08
+                </td>
+
+                <td>
+                    42
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    41
+                </td>
+
+                <td>
+                    12.65s
+                </td>
+
             </tr>
             
 
             <tr>
-                <td>2026-09-08</td>
-                <td>42</td>
-                <td>42</td>
-                <td>0</td>
-                <td>0</td>
-                <td>41</td>
-                <td>10.2s</td>
+
+                <td>
+                    2026-09-08
+                </td>
+
+                <td>
+                    42
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    41
+                </td>
+
+                <td>
+                    16.38s
+                </td>
+
+            </tr>
+            
+
+            <tr>
+
+                <td>
+                    2026-09-08
+                </td>
+
+                <td>
+                    42
+                </td>
+
+                <td>
+                    42
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    41
+                </td>
+
+                <td>
+                    10.2s
+                </td>
+
             </tr>
             
 
@@ -1314,6 +2121,7 @@ Healthy
 </div>
 
 </div>
+
 
 </div>
 
@@ -1344,15 +2152,16 @@ function filterChanges() {
             card.innerText
             .toLowerCase();
 
+        const cardType =
+            card.dataset.type;
+
         const matchesSearch =
             text.includes(search);
 
         const matchesType =
             type === "all"
             ||
-            text.includes(
-                type
-            );
+            cardType === type;
 
         card.style.display =
             matchesSearch
