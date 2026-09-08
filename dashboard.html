@@ -22,6 +22,7 @@
 }
 
 body {
+
     margin: 0;
 
     font-family:
@@ -35,6 +36,7 @@ body {
 }
 
 .container {
+
     max-width: 1400px;
 
     margin: auto;
@@ -43,6 +45,7 @@ body {
 }
 
 header {
+
     background: white;
 
     border-radius: 18px;
@@ -57,6 +60,7 @@ header {
 }
 
 header h1 {
+
     margin:
         0 0 8px;
 
@@ -64,18 +68,21 @@ header h1 {
 }
 
 header p {
+
     margin: 0;
 
     color: #687386;
 }
 
 .notice {
+
     background: #fff7df;
 
     border:
         1px solid #ead28a;
 
-    padding: 15px 18px;
+    padding:
+        15px 18px;
 
     border-radius: 12px;
 
@@ -83,6 +90,7 @@ header p {
 }
 
 .cards {
+
     display: grid;
 
     grid-template-columns:
@@ -97,6 +105,7 @@ header p {
 }
 
 .card {
+
     background: white;
 
     border-radius: 15px;
@@ -109,6 +118,7 @@ header p {
 }
 
 .card .number {
+
     font-size: 30px;
 
     font-weight: bold;
@@ -117,12 +127,14 @@ header p {
 }
 
 .card .label {
+
     color: #687386;
 
     font-size: 14px;
 }
 
 .section {
+
     background: white;
 
     border-radius: 18px;
@@ -137,10 +149,12 @@ header p {
 }
 
 .section h2 {
+
     margin-top: 0;
 }
 
 .health {
+
     display: grid;
 
     grid-template-columns:
@@ -153,6 +167,7 @@ header p {
 }
 
 .health-item {
+
     padding: 16px;
 
     border-radius: 12px;
@@ -161,16 +176,19 @@ header p {
 }
 
 .health-item strong {
+
     display: block;
 
     margin-bottom: 6px;
 }
 
 .health-status {
+
     font-weight: bold;
 }
 
 .controls {
+
     display: flex;
 
     gap: 10px;
@@ -182,6 +200,7 @@ header p {
 
 input,
 select {
+
     padding:
         11px 13px;
 
@@ -194,6 +213,7 @@ select {
 }
 
 .change-card {
+
     border:
         1px solid #e2e6ee;
 
@@ -207,6 +227,7 @@ select {
 }
 
 .change-card summary {
+
     cursor: pointer;
 
     display: flex;
@@ -221,6 +242,7 @@ select {
 }
 
 .summary-main {
+
     display: flex;
 
     gap: 10px;
@@ -232,6 +254,7 @@ select {
 }
 
 .badge {
+
     padding:
         5px 9px;
 
@@ -245,21 +268,25 @@ select {
 }
 
 .priority {
+
     font-size: 12px;
 
     font-weight: bold;
 }
 
 .url {
+
     overflow-wrap:
         anywhere;
 }
 
 .change-card p {
+
     color: #687386;
 }
 
 .diff {
+
     display: grid;
 
     grid-template-columns:
@@ -272,6 +299,7 @@ select {
 
 .old,
 .new {
+
     padding: 15px;
 
     border-radius: 10px;
@@ -281,19 +309,23 @@ select {
 }
 
 .old {
+
     background: #fff0f0;
 }
 
 .new {
+
     background: #effaf2;
 }
 
 .old h4,
 .new h4 {
+
     margin-top: 0;
 }
 
 .empty {
+
     padding: 30px;
 
     text-align: center;
@@ -302,6 +334,7 @@ select {
 }
 
 table {
+
     width: 100%;
 
     border-collapse:
@@ -310,6 +343,7 @@ table {
 
 th,
 td {
+
     text-align: left;
 
     padding: 12px;
@@ -319,23 +353,34 @@ td {
 }
 
 th {
+
     font-size: 13px;
 
     color: #687386;
 }
 
+small {
+
+    color: #687386;
+
+    font-size: 11px;
+}
+
 @media(max-width:700px) {
 
     .container {
+
         padding: 15px;
     }
 
     .diff {
+
         grid-template-columns:
             1fr;
     }
 
     .summary-main {
+
         align-items:
             flex-start;
     }
@@ -350,7 +395,6 @@ th {
 
 <div class="container">
 
-
 <header>
 
 <h1>
@@ -362,8 +406,10 @@ th {
 </p>
 
 <p style="margin-top:8px;">
+
     Last checked:
-    2026-09-08 11:10 UTC
+    2026-09-08 11:22 UTC
+
 </p>
 
 </header>
@@ -371,11 +417,9 @@ th {
 
 
 
-
 <!-- OVERVIEW -->
 
 <div class="cards">
-
 
 <div class="card">
 
@@ -576,7 +620,7 @@ th {
     Duration
 </strong>
 
-9.72s
+12.71s
 
 </div>
 
@@ -596,7 +640,7 @@ th {
 </div>
 
 
-<!-- CHANGES -->
+<!-- CURRENT CHANGES -->
 
 <div class="section">
 
@@ -610,7 +654,7 @@ th {
 <input
     id="search"
     type="text"
-    placeholder="Search URL or change..."
+    placeholder="Search URL, H1, Title..."
     onkeyup="filterChanges()"
 >
 
@@ -642,6 +686,42 @@ th {
 
 </select>
 
+
+<select
+    id="field"
+    onchange="filterChanges()"
+>
+
+<option value="all">
+    All Fields
+</option>
+
+<option value="H1">
+    H1
+</option>
+
+<option value="Title">
+    Title
+</option>
+
+<option value="Description">
+    Description
+</option>
+
+<option value="Canonical">
+    Canonical
+</option>
+
+<option value="Robots">
+    Robots
+</option>
+
+<option value="Content">
+    Content
+</option>
+
+</select>
+
 </div>
 
 
@@ -665,6 +745,11 @@ th {
 <h2>
     Change History
 </h2>
+
+<p style="color:#687386;">
+    Every crawl now stores complete change details
+    including OLD → NEW values.
+</p>
 
 
 <div style="overflow-x:auto;">
@@ -703,6 +788,10 @@ th {
     Duration
 </th>
 
+<th>
+    Details
+</th>
+
 </tr>
 
 </thead>
@@ -715,6 +804,51 @@ th {
 
                 <td>
                     2026-09-08
+                    <br>
+                    <small>
+                        2026-09-08T11:22:01.617994+00:00
+                    </small>
+                </td>
+
+                <td>
+                    41
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    0
+                </td>
+
+                <td>
+                    12.71s
+                </td>
+
+                <td>
+                    0
+                </td>
+
+            </tr>
+            
+
+            <tr>
+
+                <td>
+                    2026-09-08
+                    <br>
+                    <small>
+                        2026-09-08T11:10:08.201244+00:00
+                    </small>
                 </td>
 
                 <td>
@@ -741,6 +875,10 @@ th {
                     9.72s
                 </td>
 
+                <td>
+                    0
+                </td>
+
             </tr>
             
 
@@ -748,6 +886,10 @@ th {
 
                 <td>
                     2026-09-08
+                    <br>
+                    <small>
+                        2026-09-08T11:06:09.563891+00:00
+                    </small>
                 </td>
 
                 <td>
@@ -774,6 +916,10 @@ th {
                     11.74s
                 </td>
 
+                <td>
+                    0
+                </td>
+
             </tr>
             
 
@@ -781,6 +927,10 @@ th {
 
                 <td>
                     2026-09-08
+                    <br>
+                    <small>
+                        2026-09-08T11:02:48.124808+00:00
+                    </small>
                 </td>
 
                 <td>
@@ -807,6 +957,10 @@ th {
                     4.01s
                 </td>
 
+                <td>
+                    0
+                </td>
+
             </tr>
             
 
@@ -814,6 +968,10 @@ th {
 
                 <td>
                     2026-09-08
+                    <br>
+                    <small>
+                        2026-09-08T10:58:58.160105+00:00
+                    </small>
                 </td>
 
                 <td>
@@ -838,6 +996,10 @@ th {
 
                 <td>
                     4.81s
+                </td>
+
+                <td>
+                    0
                 </td>
 
             </tr>
@@ -870,6 +1032,11 @@ function filterChanges() {
         .getElementById("type")
         .value;
 
+    const field =
+        document
+        .getElementById("field")
+        .value;
+
     const cards =
         document.querySelectorAll(
             "#changes .change-card"
@@ -884,6 +1051,16 @@ function filterChanges() {
         const cardType =
             card.dataset.type;
 
+        const fieldText =
+            card.querySelector(
+                "strong"
+            );
+
+        const cardField =
+            fieldText
+            ? fieldText.innerText
+            : "";
+
         const matchesSearch =
             text.includes(search);
 
@@ -892,9 +1069,17 @@ function filterChanges() {
             ||
             cardType === type;
 
+        const matchesField =
+            field === "all"
+            ||
+            cardField === field;
+
         card.style.display =
             matchesSearch
-            && matchesType
+            &&
+            matchesType
+            &&
+            matchesField
             ? ""
             : "none";
 
@@ -903,6 +1088,7 @@ function filterChanges() {
 }
 
 </script>
+
 
 </body>
 
