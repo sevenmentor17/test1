@@ -539,5 +539,290 @@
         "details": "Crawl failed: ConnectionError"
       }
     ]
+  },
+  {
+    "date": "2026-09-10",
+    "checked_at": "2026-09-10T08:30:04.191702+00:00",
+    "pages": 39,
+    "new": 39,
+    "changed": 0,
+    "removed": 0,
+    "failed": 0,
+    "duration": 10.26,
+    "changes": [
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/10-best-tall-indoor-plants-to-elevate-your-homes-aesthetic",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/about-us",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/agriculture",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/air-purifying-plants-gardening-ideas",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/almond-tree-in-india",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/aquaculture",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/are-hydrangeas-indoor-or-outdoor-plants",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/are-snake-plants-really-good-for-oxygen-at-night",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/best-fertilizers-for-indoor-herbs",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/best-indoor-plants-for-bedroom-air-quality",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/best-indoor-plants-for-clean-air",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/brazil-nuts-tree-in-india",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/contact-us",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/copyright-notice",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/disclaimer",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/does-peepal-tree-release-oxygen-at-night",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/dragon-fruit-plant-growing-and-care-guide",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/fish-farming-business-plan",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/gardening",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/greenhouse-farming-in-india",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/hazelnut-tree-in-india",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/how-to-crack-the-kraftshala-screening-test",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/indoor-plants-that-produce-oxygen",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/is-it-safe-to-keep-plants-in-bedroom-at-night",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/kitchen-garden-at-home-in-india",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/kraftshala",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/lemon-farming-in-india",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/low-maintenance-indoor-plants",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/onion-yield-per-acre",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/organic-fertilizer-for-hydroponics",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/organic-liquid-fertilizer-for-vegetable-garden",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/organic-water-soluble-fertilizer",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/peas-farming-in-kenya",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/privacy-policy",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/terms-and-conditions",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/top-10-flowering-shrubs-plants-name-list",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/vertical-farming-in-india",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      },
+      {
+        "type": "new",
+        "url": "https://sproutandsoil.com/which-plants-release-oxygen-at-night",
+        "field": "Page",
+        "priority": "medium",
+        "details": "New page"
+      }
+    ]
   }
 ]
