@@ -1066,5 +1066,276 @@
     "failed": 0,
     "duration": 4.59,
     "changes": []
+  },
+  {
+    "date": "2026-09-12",
+    "checked_at": "2026-09-12T10:10:40.292314+00:00",
+    "pages": 0,
+    "new": 0,
+    "changed": 0,
+    "removed": 0,
+    "failed": 37,
+    "duration": 40.02,
+    "changes": [
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed: Timeout"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/10-best-tall-indoor-plants-to-elevate-your-homes-aesthetic",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed: Timeout"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/about-us",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed: Timeout"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/agriculture",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/air-purifying-plants-gardening-ideas",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed: Timeout"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/almond-tree-in-india",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/aquaculture",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed: Timeout"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/are-hydrangeas-indoor-or-outdoor-plants",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/are-snake-plants-really-good-for-oxygen-at-night",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed: Timeout"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/best-fertilizers-for-indoor-herbs",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/best-indoor-plants-for-bedroom-air-quality",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/best-indoor-plants-for-clean-air",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/brazil-nuts-tree-in-india",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/contact-us",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/copyright-notice",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/disclaimer",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/does-peepal-tree-release-oxygen-at-night",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/dragon-fruit-plant-growing-and-care-guide",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/fish-farming-business-plan",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/gardening",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/greenhouse-farming-in-india",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/hazelnut-tree-in-india",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/how-to-crack-the-kraftshala-screening-test",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/indoor-plants-that-produce-oxygen",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/is-it-safe-to-keep-plants-in-bedroom-at-night",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/kitchen-garden-at-home-in-india",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/kraftshala",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/lemon-farming-in-india",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/low-maintenance-indoor-plants",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/organic-fertilizer-for-hydroponics",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/organic-liquid-fertilizer-for-vegetable-garden",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/organic-water-soluble-fertilizer",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/privacy-policy",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/terms-and-conditions",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/top-10-flowering-shrubs-plants-name-list",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/vertical-farming-in-india",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      },
+      {
+        "type": "failed",
+        "url": "https://sproutandsoil.com/which-plants-release-oxygen-at-night",
+        "field": "Crawl",
+        "priority": "medium",
+        "details": "Crawl failed (HTTP 403)"
+      }
+    ]
   }
 ]
