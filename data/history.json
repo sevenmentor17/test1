@@ -2953,5 +2953,16 @@
     "failed": 0,
     "duration": 13.98,
     "changes": []
+  },
+  {
+    "date": "2026-11-25",
+    "checked_at": "2026-11-25T12:35:20.369080+00:00",
+    "pages": 37,
+    "new": 0,
+    "changed": 0,
+    "removed": 0,
+    "failed": 0,
+    "duration": 15.15,
+    "changes": []
   }
 ]
